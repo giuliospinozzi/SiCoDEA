@@ -233,8 +233,12 @@ s_drug= function(df) {
 
 plot_sdrug = function(mod_df,drug_name,in_via) {
   
-  colors=c("blueviolet","coral","lightpink",
-           "darkturquoise","darkgoldenrod1")
+  colors=c("Log-logistic"="blueviolet","Median-effect"="coral",
+           "Log-logistic[01]"="lightpink","Log-logistic[0]"="darkturquoise",
+           "Log-logistic[1]"="darkgoldenrod1","Log-logistic IC50"="blueviolet",
+           "Median-effect IC50"="coral","Log-logistic[01] IC50"="lightpink",
+           "Log-logistic[0] IC50"="darkturquoise",
+           "Log-logistic[1] IC50"="darkgoldenrod1")
   
   if (in_via=="via") lab="viability"
   if (in_via=="in") lab="inhibition"
@@ -268,17 +272,30 @@ plot_sdrug = function(mod_df,drug_name,in_via) {
     geom_line(data=mod_df$log_log_1$fa,
               aes(x=log(conc),y=fa,colour="Log-logistic[1]"),
               size=0.8) +
-    geom_vline(xintercept=log(mod_df$log_log$ic50),
-               c,size=0.5,linetype="dashed", color="blueviolet") +
-    geom_vline(xintercept=log(mod_df$log_log_0$ic50),
-               c,size=0.5,linetype="dashed", color="coral") +
-    geom_vline(xintercept=log(mod_df$log_log_01$ic50),
-               c,size=0.5,linetype="dashed", color="lightpink") +
-    geom_vline(xintercept=log(mod_df$log_log_1$ic50),
-               c,size=0.5,linetype="dashed", color="darkturquoise") +
-    geom_vline(xintercept=log(mod_df$med_eff$ic50),
-               c,size=0.5,linetype="dashed", color="darkgoldenrod1") +
-    labs(colour="Model") + scale_color_manual(values = colors)
+    geom_vline(mapping=aes(xintercept=log(mod_df$log_log$ic50),
+                           size="Log-logistic IC50"),
+               c,linetype="dashed", color="blueviolet") +
+    geom_vline(mapping=aes(xintercept=log(mod_df$log_log_0$ic50),
+                           size="Log-logistic[0] IC50"),
+               c,linetype="dashed", color="darkturquoise") +
+    geom_vline(mapping=aes(xintercept=log(mod_df$log_log_01$ic50),
+                           size="Log-logistic[01] IC50"),
+               c,linetype="dashed", color="lightpink") +
+    geom_vline(mapping=aes(xintercept=log(mod_df$log_log_1$ic50),
+                           size="Log-logistic[1] IC50"),
+               c,linetype="dashed", color="darkgoldenrod1") +
+    geom_vline(mapping=aes(xintercept=log(mod_df$med_eff$ic50),
+                           size="Median-effect IC50"),
+               c,linetype="dashed", color="coral") +
+    scale_color_manual(values = c(colors[1:5])) + ylim(0,1) +
+    guides(size = guide_legend(order = 2,override.aes = list(colour=colors[6:10])), 
+           colour = guide_legend(order = 1)) +
+    scale_size_manual("", values=rep(0.5,5),
+                      labels=c(paste0("IC50 = ",signif(mod_df$log_log$ic50,4)),
+                               paste0("IC50 = ",signif(mod_df$med_eff$ic50,4)),
+                               paste0("IC50 = ",signif(mod_df$log_log_01$ic50,4)),
+                               paste0("IC50 = ",signif(mod_df$log_log_0$ic50,4)),
+                               paste0("IC50 = ",signif(mod_df$log_log_1$ic50,4))))
   
   return(g_plot)
 }
