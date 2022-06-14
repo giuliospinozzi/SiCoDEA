@@ -1404,7 +1404,7 @@ shinyServer(function(input, output, session) {
         helpText('$$f_a=min+ \\frac{1-min}{1+\\left(\\frac{D}{D_m}
                          \\right)^m}$$')},
       if(input$drug=="Median-effect") {
-        helpText('$$f_a=\\frac{1}{1+\\left(\\frac{D}{D_m}
+        helpText('$$f_a=\\frac{1}{1+\\left(\\frac{D_m}{D}
                          \\right)^m}$$')}
     )
   })

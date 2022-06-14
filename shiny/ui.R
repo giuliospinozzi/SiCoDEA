@@ -461,7 +461,7 @@ shinyUI(fluidPage(
            The points that are most located at the top right are those with the most
            suitable model for the data under examination. This way we can choose 
            the right model for our experiment."),
-                      img(src = "screenshot5.png",height = 650, width = 1000),
+                      img(src = "screenshot5.png",height = 600, width = 1000),
                       p("In the second tab it is possible to choose the model for the combination
            index from five different options:",em("Response Additivity"),"model,",
                         em("Highest Single Agent"),"(HSA) model,",em("Bliss Independence"),
