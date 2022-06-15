@@ -1069,7 +1069,7 @@ shinyServer(function(input, output, session) {
     if (is.null(input$file1)) {return(NULL)}
     infile <- input$file1
     dati1=read_data(infile$datapath,sep=input$sep,dec=input$dec,mat_tab=input$mat_tab)
-    plot_r2(dati1,input$norm,c(input$name_drug1,input$name_drug1),input$out_pv,
+    plot_r2(dati1,input$norm,c(input$name_drug1,input$name_drug2),input$out_pv,
             input$mat_tab,input$in_via)[[2]]
   })
   
