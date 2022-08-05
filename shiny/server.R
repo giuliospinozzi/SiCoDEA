@@ -734,7 +734,7 @@ heat_plot=function(m,drug,model,model_name) {
   p=p[,2:ncol(p)]
   
   p=p[order(as.numeric(rownames(p)),decreasing = T),]
-  p=p[order(as.numeric(colnames(p))),]
+  p=p[,order(as.numeric(colnames(p)))]
   
   p=as.matrix(p)
   colnames(p)=signif(as.numeric(colnames(p)),2)
