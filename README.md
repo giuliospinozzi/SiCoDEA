@@ -1,5 +1,5 @@
 # SiCoDEA
-<p align="justify"> SiCoDEA (Single and Combined Drug Effect Analysis) is a simple, fast and complete app for analyzing the effect of individual drugs and their combinations and is available at: https://sicodea.shinyapps.io/shiny/. A video tutorial is also available to understand how it works: https://youtu.be/kzzdU83r0_I.
+<p align="justify"> SiCoDEA (Single and Combined Drug Effect Analysis) is a simple, fast and complete app for analyzing the effect of individual drugs and their combinations and is available at: https://sicodea.shinyapps.io/shiny/. A video tutorial is also available to understand how it works: https://youtu.be/kzzdU83r0_I. The scientific paper is availabile at: https://www.mdpi.com/2218-273X/12/7/904
 The app consists of three panels, each of which allows you to carry out a different analysis: a single drug analysis, a comparison of different drugs or an analysis of drug combinations. </p>
 
 
